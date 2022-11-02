@@ -6,14 +6,12 @@ namespace ProductAPI.Application.Common
 {
     public abstract class BaseUnitOfWork : IDisposable
     {
-        protected DbContext dbContext;
+        protected internal DbContext dbContext;
         public BaseUnitOfWork(DbContext _dbContext)
         {
             dbContext = _dbContext;
         }
-        #region Services
-            public abstract BaseService<Product> ProductService { get; }
-        #endregion
+        
         #region DBOperations
         public IDbContextTransaction BeginTransaction()
         {
